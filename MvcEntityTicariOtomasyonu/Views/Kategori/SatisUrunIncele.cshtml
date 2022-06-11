@@ -1,0 +1,34 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "SatisUrunIncele";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>PERSONEL</th>
+        <th>CARİ</th>
+        <th>ÜRÜN ADI</th>
+        <th>ÜRÜN MARKA</th>
+        <th>ADET</th>
+        <th>TARİH</th>
+        <th>FİYAT</th>
+    </tr>
+
+    @foreach (var st in Model)
+    {
+        <tr>
+            @Html.Hidden(st.UrunId.ToString())
+            <td>@st.Personel.PersonelAd @st.Personel.PersonelSoyad</td>
+            <td>@st.Cari.CariAd @st.Cari.CariSoyad</td>
+            <td>@st.Urun.UrunAd</td>
+            <td>@st.Urun.UrunMarka</td>
+            <td>@st.Adet</td>
+            <td>@st.Tarih.ToShortDateString()</td>
+            <td>@st.Fiyat</td>
+            @*<td><a href="/Kategori/SatisUrunIncele/@st.UrunId" class="btn btn-danger" style="background-color:hotpink">İNCELE</a></td>*@
+        </tr>
+    }
+</table>
+

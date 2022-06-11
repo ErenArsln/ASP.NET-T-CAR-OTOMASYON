@@ -1,0 +1,53 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.SatisHareket
+
+@{
+    ViewBag.Title = "SatisEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("SatisEkle", "Satis", FormMethod.Post))
+{
+    <div style="margin-top:30px;">
+
+        @Html.Label("Personel Ad Soyad")
+        @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.sec, "Personel Seçiniz", new { @class = "form form-control" })
+
+
+        @Html.Label("Cari Ad Soyad")
+        @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.sec2, "Cari Seçiniz", new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.Urun)
+        @Html.DropDownListFor(x => x.UrunId, (List<SelectListItem>)ViewBag.sec3, "Ürün Seçiniz", new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.Adet)
+        <input type="number" max="20" min="1" class="form form-control" id="adet" onchange="sum()" />
+
+        @Html.LabelFor(x => x.Fiyat)
+        @Html.TextBoxFor(x => x.Fiyat, "Toplam Tutar", new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.ToplamTutar)
+        @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form form-control" })
+
+
+        @Html.LabelFor(x => x.Durum)
+        @Html.TextBoxFor(x => x.Durum, new { @class = "form form-control" })
+        <br />
+
+        
+        <input type="number" min="1" id="deger2" onkeyup="sum();" />
+        <input type="text" id="degersonuc" readonly class="form-check form-control" style="margin-top:10px; width:190px;"/>
+
+        <br />
+        <button class="btn btn-primary" style="margin-top:15px;">SATIŞ EKLE</button>
+    </div>
+}
+<script>
+    function sum() {
+        var sayi1 = document.getElementById('adet').value;
+        var sayi2 = document.getElementById('deger2').value;
+        var sonuc = parseInt(sayi1) * parseInt(sayi2);
+        if (!isNaN(sonuc)) {
+            document.getElementById('degersonuc').value = sonuc;
+        }
+    }
+</script>

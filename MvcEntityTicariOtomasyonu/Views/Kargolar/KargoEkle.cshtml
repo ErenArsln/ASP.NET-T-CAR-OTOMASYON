@@ -1,0 +1,30 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.KargoAyinti
+@{
+    ViewBag.Title = "KargoEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("KargoEkle", "Kargolar", FormMethod.Post))
+{
+    <label>Açıklama</label>
+    @Html.TextBoxFor(x => x.KargoAciklama, new { @class = "form form-control" })
+
+    <label>Kod</label>
+    <br />
+    <input type="text" value="@ViewBag.takipkodu" class="form-check form-control" readonly name="KargoKodu"/>
+    <br />
+    <label>Kargo Personeli</label>
+    @*@Html.DropDownListFor(x => x.KargoPersonel, (List<SelectListItem>)ViewBag.ktgrpersonel, "Personel Seçiniz", new { @class = "form form-control" })*@
+    @Html.TextBoxFor(x => x.KargoPersonel, new { @class = "form form-control" })
+
+    <label>Kargo Müşterisi</label>
+    @Html.TextBoxFor(x => x.KargoMüsteri, new { @class = "form form-control" })
+
+    @Html.LabelFor(x => x.Tarihi)
+    <input type="date" name="Tarihi" class="form-check form-control" />
+    <br />
+    <button class="btn btn-primary">KARGOYU EKLE</button>
+}
+<br />
+
+

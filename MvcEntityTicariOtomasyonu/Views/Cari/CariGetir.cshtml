@@ -1,0 +1,35 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.Cari
+@{
+    ViewBag.Title = "CariGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin-top:30px;">
+
+    @using (Html.BeginForm("CariGuncelle", "Cari", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.CariId)
+
+        @Html.LabelFor(x => x.CariAd)
+        @Html.TextBoxFor(x => x.CariAd, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.CariSoyad)
+        @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.CariSehir)
+        @Html.TextBoxFor(x => x.CariSehir, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.CariSifre)
+        @Html.TextBoxFor(x => x.CariSifre, new { @class = "form form-control", @type="password" })
+
+        @Html.LabelFor(x => x.CariMail)
+        @Html.TextBoxFor(x => x.CariMail, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.Durum)
+        @Html.TextBoxFor(x => x.Durum, new { @class = "form form-control" })
+
+        <button class="btn btn-success" style="margin-top:15px;">GÜNCELLE</button>
+    }
+
+</div>
+

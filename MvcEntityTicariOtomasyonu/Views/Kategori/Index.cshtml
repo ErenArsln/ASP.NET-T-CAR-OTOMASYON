@@ -1,0 +1,40 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Kategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>KATEGORİ ADI</th>
+        <th>KATEGORİ SİL</th>
+        <th>KATEGORİ GÜNCELLE</th>
+        <th>KATEGORİ AYRINTILARI</th>
+    </tr>
+
+    @foreach (var ktgr in Model)
+    {
+        <tr>
+            @Html.Hidden(ktgr.KategoriId.ToString())
+            <td>@ktgr.KategoriAd</td>
+            <td><a href="/Kategori/KategoriSil/@ktgr.KategoriId" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Kategori/KategoriGetir/@ktgr.KategoriId" class="btn btn-success">GÜNCELLE</a></td>
+            <td><a href="/Kategori/KategoriAyrıntı/@ktgr.KategoriId" class="btn btn-danger" style="background-color: darkorchid">AYRINTILAR</a></td>
+        </tr>
+    }
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfano => Url.Action("Index", new { sayfano }),
+new PagedListRenderOptions 
+{
+    LiElementClasses=new List<string>
+    {"page-link"}
+})
+
+<a href="/Kategori/KategoriEkle" class="btn btn-primary">KATEGORİ EKLE</a>
+

@@ -1,0 +1,54 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Cari>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("Index", "Cari", FormMethod.Get))
+{
+    <p>
+        <b>Cari Adı: </b>@Html.TextBox("ara")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+<br />
+<table class="table table-bordered" style="margin-top:30px;">
+
+    <tr>
+        <th>CARİ AD</th>
+        <th>CARİ SOYAD</th>
+        <th>CARİ ŞİFRE</th>
+        <th>CARİ ŞEHİR</th>
+        <th>CARİ MAIL</th>
+        <th>CARİ SİL</th>
+        <th>CARİ GÜNCELLE</th>
+        <th>CARİ AYRINTILARI</th>
+    </tr>
+
+    @foreach (var cars in Model)
+    {
+        <tr>
+            @Html.Hidden(cars.CariId.ToString())
+            <td>@cars.CariAd</td>
+            <td>@cars.CariSoyad</td>
+            <td>@cars.CariSifre</td>
+            <td>@cars.CariSehir</td>
+            <td>@cars.CariMail</td>
+            <td><a href="/Cari/CariSil/@cars.CariId" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Cari/CariGetir/@cars.CariId" class="btn btn-success">GÜNCELLE</a></td>
+            <td><a href="/Cari/CariBilgi/@cars.CariId" class="btn btn-success" style="background-color: darkorchid">AYRINTILAR</a></td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfano => Url.Action("Index", new { sayfano }),new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    {"page-link"}
+})
+<a href="/Cari/CariEkle" style="margin-top:15px;" class="btn btn-primary">CARİ EKLE</a>
+
+

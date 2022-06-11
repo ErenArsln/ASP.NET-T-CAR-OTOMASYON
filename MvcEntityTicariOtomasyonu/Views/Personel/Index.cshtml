@@ -1,0 +1,60 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+@using (Html.BeginForm("Index", "Personel", FormMethod.Get))
+{
+    <p>
+        <b>Personel Adı:</b> @Html.TextBox("ara")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+<br />
+<table class="table table-bordered" style="margin-top:30px;">
+
+    <tr>
+        <th>PERSONEL AD</th>
+        <th>PERSONEL SOYAD</th>
+        <th>PERSONEL YAŞ</th>
+        <th>PERSONEL TELEFON</th>
+        <th>PERSONEL MAIL</th>
+        <th>PERSONEL GÖRSEL</th>
+        <th>DURUM</th>
+        <th>DEPARTMAN</th>
+        @*<th>PERSONEL GÜNCELLE</th>*@
+        <th>PERSONEL SİL</th>
+    </tr>
+
+    @foreach (var pers in Model)
+    {
+        <tr>
+            @Html.Hidden(pers.PersonelId.ToString())
+            <td style="padding-top:35px;">@pers.PersonelAd</td>
+            <td style="padding-top:35px;">@pers.PersonelSoyad</td>
+            <td style="padding-top:35px;">@pers.PersonelYas</td>
+            <td style="padding-top:35px;">@pers.PersonelTelefon</td>
+            <td style="padding-top:35px;">@pers.PersonelMail</td>
+            <td><img src="@pers.PersonelGörsel" style="width:115px; height:75px; text-align:center; padding-left:35px;"></td>
+            <td style="padding-top:35px;">@pers.Durum</td>
+            <td style="padding-top:35px;">@pers.Departman.DepartmanAd</td>
+            @*<td style="padding-top:30px; padding-left:50px;"><a href="/Personel/PersonelGetir/@pers.PersonelId" class="btn btn-success">GÜNCELLE</a></td>*@
+            <td style="padding-top:30px; padding-left:45px;"><a href="/Personel/PersonelSil/@pers.PersonelId" class="btn btn-danger">SİL</a></td>
+            @*<td><a href="/Departman/DepartmanPersonelSatis/@pers.PersonelId" class="btn btn-success" style="background-color: darkorchid">AYRINTILAR</a></td>*@
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfano => Url.Action("Index", new { sayfano }),new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    {"page-link"}
+})
+<a href="/Personel/PersonelEkle" style="margin-top:15px;" class="btn btn-primary">PERSONEL EKLE</a>
+

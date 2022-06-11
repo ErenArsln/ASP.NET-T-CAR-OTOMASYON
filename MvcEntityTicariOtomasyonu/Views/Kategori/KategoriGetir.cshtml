@@ -1,0 +1,27 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.Kategori
+@{
+    ViewBag.Title = "KategoriGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))
+{
+    <div style="margin-top:30px;">
+        
+        @Html.LabelFor(x => x.KategoriAd)
+        @Html.TextBoxFor(x => x.KategoriAd, new { @class = "form form-control" })
+        @Html.HiddenFor(x=>x.KategoriId)
+
+        <button class="btn btn-success" style="margin-top:15px;">GÜNCELLE</button>
+
+    </div>
+
+
+}
+
+
+
+
+

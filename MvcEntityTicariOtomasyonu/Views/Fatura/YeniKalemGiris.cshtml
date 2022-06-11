@@ -1,0 +1,33 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.FaturaKalem
+@{
+    ViewBag.Title = "YeniKalemGiris";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin-top:30px;">
+
+    @using (Html.BeginForm("YeniKalemGiris", "Fatura", FormMethod.Post))
+    {
+
+        @Html.LabelFor(x => x.Aciklama)
+        @Html.TextBoxFor(x => x.Aciklama, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.Miktar)
+        @Html.TextBoxFor(x => x.Miktar, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.BirimFiyat)
+        @Html.TextBoxFor(x => x.BirimFiyat, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.Tutar)
+        @Html.TextBoxFor(x => x.Tutar, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.FaturaId)
+        @Html.TextBoxFor(x => x.FaturaId, new { @class = "form form-control" })
+
+        <button class="btn btn-primary" style="margin-top:15px;">EKLE</button>
+    }
+
+</div>
+
+
+

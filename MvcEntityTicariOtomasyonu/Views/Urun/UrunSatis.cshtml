@@ -1,0 +1,35 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.SatisHareket
+@{
+    ViewBag.Title = "UrunSatis";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin-top:30px;">
+
+    @using (Html.BeginForm("UrunSatis", "Urun", FormMethod.Post))
+    {
+
+        @Html.LabelFor(x => x.Urun.UrunAd)
+        <input type="text" name="UrunId" value="@ViewBag.urunid" readonly class="form-check form-control" />
+
+        @Html.LabelFor(x => x.Personel.PersonelAd)
+        @Html.DropDownListFor(x=>x.Personel.PersonelAd,(List<SelectListItem>)ViewBag.personelsec, "Personel Seçiniz",new {@class="form form-control" })
+
+        @Html.LabelFor(x => x.Cari.CariAd)
+        @Html.DropDownListFor(x=>x.Cari.CariAd,(List<SelectListItem>)ViewBag.carisec,"Cari Seçiniz", new {@class="form form-control"})
+
+        @Html.LabelFor(x => x.Adet)
+        @Html.TextBoxFor(x => x.Adet, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.Fiyat)
+        <input type="text" name="UrunId" value="@ViewBag.fiyatid" readonly class="form-check form-control" />
+
+        @Html.LabelFor(x => x.ToplamTutar)
+        @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form form-control" })
+
+        <button class="btn btn-primary" style="margin-top:15px;">EKLE</button>
+    }
+
+</div>
+
+

@@ -1,0 +1,40 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.Cari
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+<br />
+<br />
+<h2>MÜŞTERİ BİLGİLERİ</h2>
+
+@using (Html.BeginForm("Index", "CariHesap", FormMethod.Post))
+{
+    <table class="table table-bordered" style="margin-top:50px;">
+        <tr>
+            <th><label>Mail: @HttpContext.Current.User.Identity.Name</label></th>
+        </tr>
+        <tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.CariAd, new { @class = "form form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.CariSehir, new { @class = "form form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.CariSifre, new { @class = "form form-control" })
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-success">GÜNCELLE</button>
+}
+

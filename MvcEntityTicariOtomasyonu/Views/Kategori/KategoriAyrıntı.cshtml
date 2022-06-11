@@ -1,0 +1,27 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@model List<Urun>
+@{
+    ViewBag.Title = "KategoriAyrıntı";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>ÜRÜN ADI</th>
+        <th>ÜRÜN MARKA</th>
+        <th>KATEGORİ</th>
+        <th>ÜRÜNÜ İNCELE</th>
+    </tr>
+
+    @foreach (var xd in Model)
+    {
+        <tr>
+            @Html.Hidden(xd.UrunId.ToString())
+            <td>@xd.UrunAd</td>
+            <td>@xd.UrunMarka</td>
+            <td>@xd.Kategori.KategoriAd</td>
+            <td><a href="/Kategori/SatisUrunIncele/@xd.UrunId" class="btn btn-danger" style="background-color:hotpink">İNCELE</a></td>
+        </tr>
+    }
+</table>
+

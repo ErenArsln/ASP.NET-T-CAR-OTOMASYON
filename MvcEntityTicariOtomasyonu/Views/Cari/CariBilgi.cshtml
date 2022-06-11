@@ -1,0 +1,39 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "CariBilgi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>SATIŞ ID</th>
+        <th>CARİ AD SOYAD</th>
+        <th>PERSONEL AD SOYAD</th>
+        <th>ÜRÜN</th>
+        <th>ÜRÜN ADETİ</th>
+        <th>FİYAT</th>
+        <th>TOPLAM TUTAR</th>
+        <th>DURUM</th>
+        <th>YAZDIR</th>
+
+    </tr>
+
+    @foreach (var satis in Model)
+    {
+        <tr>
+            <th>@satis.SatisId</th>
+            <td>@satis.Cari.CariAd @satis.Cari.CariSoyad</td>
+            <td>@satis.Personel.PersonelAd @satis.Personel.PersonelSoyad</td>
+            <td>@satis.Urun.UrunAd</td>
+            <td>@satis.Adet</td>
+            <td>@satis.Fiyat</td>
+            <td>@satis.ToplamTutar</td>
+            <td>@satis.Durum</td>
+            <td><a href="#" class="btn btn-danger" style="background-color:midnightblue">YAZDIR</a></td>
+        </tr>
+    }
+</table>
+
+
+

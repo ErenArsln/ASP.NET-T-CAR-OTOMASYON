@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .box {
+        justify-content: center;
+        align-items: center;
+        display: block;
+        width: 350px;
+        height: 175px;
+        background-color: red;
+        color: white;
+        margin: 5px 5px;
+        border-radius: 10px;
+    }
+
+    .b_head {
+        font-size: 25px;
+        text-align: center;
+        width: auto;
+        color: white;
+        padding: 5px;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+    }
+
+    .box2 {
+        text-align: center;
+        font-size: 55px;
+        margin: 5% auto;
+    }
+</style>
+
+<div class="row" style="justify-content:center; align-items:center; display:flex; margin:20px 0; width:auto">
+    <div class="box" style="background-color:#F6A9A9">
+        <div class="b_head"> TOPLAM CARİ</div>
+        <div class="box2">@ViewBag.l1</div>
+    </div>
+    <div class="box" style="background-color:#FFBF86">
+        <div class="b_head"> TOPLAM ÜRÜN</div>
+        <div class="box2">@ViewBag.l2</div>
+    </div>
+    <div class="box" style="background-color:#654062">
+        <div class="b_head">TOPLAM PERSONEL</div>
+        <div class="box2">@ViewBag.l3</div>
+    </div>
+    <div class="box" style="background-color:#C2F784">
+        <div class="b_head">TOPLAM KATEGORİ</div>
+        <div class="box2">@ViewBag.l4</div>
+    </div>
+</div>
+@*******************************************************************************************@
+<div class="row" style="justify-content:center; align-items:center; display:flex; margin:20px 0; width:auto">
+    <div class="box" style="background-color:#261C2C">
+        <div class="b_head">STOK</div>
+        <div class="box2">@ViewBag.l5</div>
+    </div>
+    <div class="box" style="background-color:#54E346">
+        <div class="b_head">MARKA</div>
+        <div class="box2">@ViewBag.l6</div>
+    </div>
+    <div class="box" style="background-color:#5C527F">
+        <div class="b_head">PASİF</div>
+        <div class="box2">@ViewBag.l7</div>
+    </div>
+    <div class="box" style="background-color:#F05454">
+        <div class="b_head">AKTİF</div>
+        <div class="box2">@ViewBag.aktif</div>
+    </div>
+</div>
+@*******************************************************************************************@
+<div class="row" style="justify-content:center; align-items:center; display:flex; margin:20px 0; width:auto">
+    <div class="box" style="background-color:#F55C47">
+        <div class="b_head">AZ FİYAT</div>
+        <div class="box2">@ViewBag.düsükfiyat</div>
+    </div>
+    <div class="box" style="background-color:#9FE6A0">
+        <div class="b_head">EN FAZLA MARKA</div>
+        <div class="box2">@ViewBag.marka</div>
+    </div>
+    <div class="box" style="background-color:#4AA96C">
+        <div class="b_head">TOPLAM BUZDOLABI</div>
+        <div class="box2">@ViewBag.buzdolabi</div>
+    </div>
+    <div class="box" style="background-color:#564A4A">
+        <div class="b_head">TOPLAM LAPTOP</div>
+        <div class="box2">@ViewBag.laptop</div>
+    </div>
+</div>
+@*******************************************************************************************@
+<div class="row" style="justify-content:center; align-items:center; display:flex; margin:20px 0; width:auto">
+    <div class="box" style="background-color:#9D0191">
+        <div class="b_head">EN ÇOK SATILAN</div>
+        <div class="box2">@ViewBag.coksatan</div>
+    </div>
+    <div class="box" style="background-color:#75CFB8">
+        <div class="b_head">KASADAKİ TUTAR</div>
+        <div class="box2">@ViewBag.toplamtutar</div>
+    </div>
+    <div class="box" style="background-color:#30475E">
+        <div class="b_head">GÜNÜN SATIŞLARI</div>
+        <div class="box2">@ViewBag.günsatis</div>
+    </div>
+    <div class="box" style="background-color:#6E85B2">
+        <div class="b_head">ÇOK FİYAT</div>
+        <div class="box2">@ViewBag.l8</div>
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.Fatura
+@{
+    ViewBag.Title = "FaturaEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin-top:30px;">
+
+    @using (Html.BeginForm("FaturaEkle", "Fatura", FormMethod.Post))
+    {
+        @Html.LabelFor(x => x.FaturaSeriNo)
+        @Html.TextBoxFor(x => x.FaturaSeriNo, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.FaturaSıraNo)
+        @Html.TextBoxFor(x => x.FaturaSıraNo, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.VergiDairesi)
+        @Html.TextBoxFor(x => x.VergiDairesi, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.TeslimAlan)
+        @*@Html.DropDownListFor(x => x.TeslimAlan, (List<SelectListItem>)ViewBag.listele1,"Teslim Alana Kişiyi Seçiniz", new { @class = "form form-control" })*@
+        @Html.TextBoxFor(x => x.TeslimAlan, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.TeslimEden)
+        @*@Html.DropDownListFor(x => x.TeslimEden, (List<SelectListItem>)ViewBag.listele2,"Teslim Eden Kişiyi Seçiniz", new { @class = "form form-control" })*@
+        @Html.TextBoxFor(x => x.TeslimEden, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.ToplamTutar)
+        @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.Saat)
+        @Html.TextBoxFor(x => x.Saat, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.Tarih)
+        @Html.TextBoxFor(x => x.Tarih, new { @class = "form form-control" })
+
+        <button class="btn btn-primary" style="margin-top:15px;">EKLE</button>
+    }
+
+</div>
+

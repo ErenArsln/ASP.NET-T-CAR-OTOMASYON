@@ -1,0 +1,30 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@model List<Personel>
+
+@{
+    ViewBag.Title = "DepartmanAyrıntı";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>PERSONEL GÖREV</th>
+        <th>PERSONEL ADI</th>
+        <th>PERSONEL SOYAD</th>
+        <th>PERSONEL GÖRSEL</th>
+        <th>PERSONEL İŞLEMLERİ</th>
+    </tr>
+
+    @foreach (var pers in Model)
+    {
+        <tr>
+            <td style="padding-top:30px;">@pers.Departman.DepartmanAd</td>
+            <td style="padding-top:30px;">@pers.PersonelAd</td>
+            <td style="padding-top:30px;">@pers.PersonelSoyad</td>
+            <td style="padding-left:40px;"><img src="@pers.PersonelGörsel" style="width:115px; height:75px; text-align:center; padding-left:35px;"></td>
+            <td style="padding-top:30px; padding-left:75px;"><a href="/Departman/DepartmanPersonelSatis/@pers.PersonelId" class=" btn btn-danger" style="background-color:deeppink">İŞLEMLER</a></td>
+        </tr>
+    }
+</table>
+
+

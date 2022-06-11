@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+@{ 
+    var grafikler = new Chart(width: 500, height: 600);
+    grafikler.AddTitle(text: "KATEGORİ VE ÜRÜN"); //BAŞLIK EKLEDİK
+    grafikler.AddLegend(title: "Görseller");
+
+    // X ve Y Ekseninde Grafik Oluşturma
+    grafikler.AddSeries(
+        name: "İstatistikler",
+        chartType:"pie", //Grafik tipini belirler
+        xValue: new[] { "Beyaz Eşya", "Bilgisyar Parçası", "Telefon" },//X Ekseni
+        yValues: new[] { 400, 725, 632 });//Y Ekseni
+    grafikler.Write(); // Ekrana yazdırma kodu
+}

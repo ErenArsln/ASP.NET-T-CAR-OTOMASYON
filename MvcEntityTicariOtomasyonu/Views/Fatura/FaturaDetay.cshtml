@@ -1,0 +1,32 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@model  List<FaturaKalem>
+@{
+    ViewBag.Title = "FaturaDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>FATURA KALEM ID</th>
+        <th>AÇIKLAMA</th>
+        <th>MİKTAR</th>
+        <th>BİRİM FİYAT</th>
+        <th>TOPLAM TUTAR</th>
+    </tr>
+
+    @foreach (var fklm in Model)
+    {
+        <tr>
+            <th>@fklm.FaturaKalemId</th>
+            <td>@fklm.Aciklama</td>
+            <td>@fklm.Miktar</td>
+            <td>@fklm.BirimFiyat</td>
+            <td>@fklm.Tutar</td>
+        </tr>
+    }
+</table>
+<a href="/Fatura/YeniKalemGiris" class="btn btn-danger" style="background-color:lightskyblue">YENİ KALEM GİRİŞİ</a>
+
+
+
+

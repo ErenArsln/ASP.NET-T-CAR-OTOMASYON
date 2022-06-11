@@ -1,0 +1,24 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar;
+@model List<Kargoİzleme>
+@{
+    ViewBag.Title = "KargoyuTakipEt";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>KOD</th>
+        <th>AÇIKLAMA</th>
+        <th>TARİH</th>
+    </tr>
+
+    @foreach (var takip in Model)
+    {
+        <tr>
+            <td>@takip.TakipKodu</td>
+            <td>@takip.Aciklama</td>
+            <td>@takip.Tarihi</td>
+        </tr>
+    }
+</table>
+

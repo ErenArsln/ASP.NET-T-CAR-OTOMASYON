@@ -1,0 +1,75 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.Fatura_FaturaKalem
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>FATURA NO</th>
+        <th>VERGİ DAİRESİ</th>
+        <th>TESLİM ALAN</th>
+        <th>TESLİM EDEN</th>
+        <th>TOPLAM TUTAR</th>
+        <th>SAAT</th>
+        <th>TARİH</th>
+        <th>GÜNCELLE</th>
+    </tr>
+
+    @foreach (var ftr in Model.faturaa)
+    {
+        <tr>
+            @Html.Hidden(ftr.FaturaId.ToString())
+            <td>@ftr.FaturaSeriNo  @ftr.FaturaSıraNo</td>
+            <td>@ftr.VergiDairesi</td>
+            <td>@ftr.TeslimAlan</td>
+            <td>@ftr.TeslimEden</td>
+            <td>@ftr.ToplamTutar ₺ </td>
+            <td>@ftr.Saat.ToShortTimeString()</td>
+            <td>@ftr.Tarih.ToShortDateString()</td>
+            @*<td><a href="/Fatura/FaturaDetay/@ftr.FaturaId" class="btn btn-success" style="background-color:fuchsia">POP UP</a></td>*@
+            @*<td><a href="/Fatura/FaturaDetay/@ftr.FaturaId" class="btn btn-success" style="background-color:darkblue">KALEM</a></td>*@
+            <td><a href="/Fatura/FaturaGetir/@ftr.FaturaId" class="btn btn-success">GÜNCELLE</a></td>
+
+        </tr>
+    }
+</table>
+<a href="/Fatura/FaturaEkle" class="btn btn-primary">FATURA EKLE</a>
+
+<button type="button" class="btn btn-danger" style="background-color:#ff7d00; margin-left:10px;"
+        data-toggle="modal" data-target="#Modal1">
+    DETAYLAR
+</button>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title"style="color:#ff7d00">FATURA DETAYLARI</h1>
+            </div>
+            <div class="modal-body" style="background-color:#ff7d00; ">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>FATURA NO</th>
+                        <th>AÇIKLAMA</th>
+                        <th>MİKTAR</th>
+                        <th>BİRİM FİYAT</th>
+                        <th>TUTAR</th>
+                    </tr>
+                    @foreach (var ftrs in Model.faturakalemm)
+                    {
+                        <tr>
+                            <td>@ftrs.Fatura.FaturaSeriNo @ftrs.Fatura.FaturaSıraNo</td>
+                            <td>@ftrs.Aciklama</td>
+                            <td>@ftrs.Miktar</td>
+                            <td>@ftrs.BirimFiyat</td>
+                            <td>@ftrs.Tutar</td>
+                        </tr>
+                    }
+                </table>
+                <button class="btn btn-danger" data-dismiss="modal" style="background-color:white;color:black;">ÇIKIŞ</button>
+            </div>
+        </div>
+    </div>
+</div>

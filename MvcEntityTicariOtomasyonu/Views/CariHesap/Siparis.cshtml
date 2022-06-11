@@ -1,0 +1,31 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "Siparis";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+<br />
+<br />
+<h2>SİPARİŞLERİM</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>ÜRÜN</th>
+        <th>ADET</th>
+        <th>FİYAT</th>
+        <th>TARİH</th>
+    </tr>
+
+    @foreach(var siparis in Model)
+            {
+                <tr>
+                    <td>@siparis.Urun.UrunAd</td>
+                    <td>@siparis.Adet</td>
+                    <td>@siparis.Fiyat</td>
+                    <td>@siparis.Tarih.ToShortDateString()</td>
+                </tr>
+            }
+</table>
+
+

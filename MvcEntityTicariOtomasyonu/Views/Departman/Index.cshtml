@@ -1,0 +1,29 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@model List<Departman>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>DEPARTMAN ADI</th>
+        <th>DEPARTMAN SİL</th>
+        <th>DEPARTMAN GÜNCELLE</th>
+        <th>DEPARTMAN AYRINTI</th>
+    </tr>
+
+    @foreach (var dprt in Model)
+    {
+<tr>
+    @Html.Hidden(dprt.DepartmanId.ToString())
+    <td>@dprt.DepartmanAd</td>
+    <td><a href="/Departman/DepartmanSil/@dprt.DepartmanId" class="btn btn-danger">SİL</a></td>
+    <td><a href="/Departman/DepartmanGetir/@dprt.DepartmanId" class="btn btn-success">GÜNCELLE</a></td>
+    <td><a href="/Departman/DepartmanAyrıntı/@dprt.DepartmanId" class="btn btn-success" style="background-color:darkorchid">AYRINTILAR</a></td>
+</tr>
+    }
+</table>
+
+<a href="/Departman/DepartmanEkle" class="btn btn-primary">DEPARTMAN EKLE</a>
+

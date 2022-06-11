@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MvcEntityTicariOtomasyonu.Models.Tablolar.GroupBy2>
+
+
+<div class="card">
+
+    <div class="card-header">
+        <h3 class="card-title">DEPARTMAN PERSONELLERİ</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Departman</th>
+                    <th>İlerleme Durumu</th>
+                    <th style="width: 40px">Adet</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.DepartmaId</td>
+                        <td>
+                            @if (x.DepartmanAdet <= 2)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar progress-bar-danger" style="width:30%;background-color:green;"></div>
+                                </div>
+                            }
+                            @if (x.DepartmanAdet >= 3 && x.DepartmanAdet <= 4)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar progress-bar-danger" style="width:55%;background-color:blue;"></div>
+                                </div>
+                            }
+                            @if (x.DepartmanAdet >= 5 && x.DepartmanAdet <= 6)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar progress-bar-danger" style="width:75%;background-color:darkorange;"></div>
+                                </div>
+                            }
+                            @if (x.DepartmanAdet >= 7)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar progress-bar-danger" style="width:90%;background-color:red;"></div>
+                                </div>
+                            }
+                        </td>
+                        <td>
+                            @if (x.DepartmanAdet <= 2)
+                            {
+                                <span class="badge" style="background-color:green; color:white;">@x.DepartmanAdet</span>
+
+                            }
+                            @if (x.DepartmanAdet >= 3 && x.DepartmanAdet <= 4)
+                            {
+                                <span class="badge" style="background-color:blue; color:white;">@x.DepartmanAdet</span>
+
+                            }
+                            @if (x.DepartmanAdet >= 5 && x.DepartmanAdet <= 6)
+                            {
+                                <span class="badge" style="background-color:darkorange; color:white;">@x.DepartmanAdet</span>
+
+                            }
+                            @if (x.DepartmanAdet >= 7)
+                            {
+                                <span class="badge" style="background-color:red; color:white;">@x.DepartmanAdet</span>
+
+                            }
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

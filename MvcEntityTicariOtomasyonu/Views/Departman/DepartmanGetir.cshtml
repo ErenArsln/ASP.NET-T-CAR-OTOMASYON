@@ -1,0 +1,22 @@
+﻿@model MvcEntityTicariOtomasyonu.Models.Tablolar.Departman
+@{
+    ViewBag.Title = "DepartmanGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin-top:30px;">
+
+    @using (Html.BeginForm("DepartmanGuncelle", "Departman", FormMethod.Post))
+    {
+        @Html.HiddenFor(x=>x.DepartmanId)
+        @Html.LabelFor(x => x.DepartmanAd)
+        @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form form-control" })
+
+        @Html.LabelFor(x => x.Durum)
+        @Html.TextBoxFor(x => x.Durum, new { @class = "form form-control" })
+
+        <button class="btn btn-success" style="margin-top:15px;">GÜNCELLE</button>
+    }
+
+</div>
+

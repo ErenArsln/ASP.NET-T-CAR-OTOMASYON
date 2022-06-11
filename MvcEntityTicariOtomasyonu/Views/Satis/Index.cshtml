@@ -1,0 +1,46 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@model List<SatisHareket>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<table id="tbl1" class="table table-bordered" style="margin-top:30px;">
+    <thead>
+        <tr>
+            <th>PERSONEL ADI SOYADI</th>
+            <th>ÜRÜN</th>
+            <th>TARİH</th>
+            <th>SATIŞ GÜNCELLE</th>
+            <th>SATIŞ AYRINTILARI</th>
+        </tr>
+    </thead>
+
+    @foreach (var sts in Model)
+    {
+        <tr>
+            @Html.Hidden(sts.SatisId.ToString())
+            <td>@sts.Personel.PersonelAd @sts.Personel.PersonelSoyad</td>
+            <td>@sts.Urun.UrunAd</td>
+            <td>@sts.Tarih.ToShortDateString()</td>
+            <td><a href="/Satis/SatisGetir/@sts.SatisId" class="btn btn-success">GÜNCELLE</a></td>
+            <td><a href="/Satis/SatisDetay/@sts.SatisId" class="btn btn-success" style="background-color: darkorchid">AYRINTILAR</a></td>
+        </tr>
+    }
+</table>
+<a href="/Satis/SatisEkle" style="margin-top:15px;" class="btn btn-primary">SATIŞ EKLE</a>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
+
+

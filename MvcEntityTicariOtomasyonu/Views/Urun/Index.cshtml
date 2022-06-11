@@ -1,0 +1,56 @@
+﻿@using MvcEntityTicariOtomasyonu.Models.Tablolar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Urun>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+
+@using (Html.BeginForm("Index", "Urun", FormMethod.Get)) 
+{
+    <p>
+        Ürün Adı: @Html.TextBox("ara")
+        <input type="submit" value="Ara"/>
+    </p>
+}
+
+<br />
+<table class="table table-bordered" style="margin-top:30px;">
+    <tr>
+        <th>ÜRÜN ADI</th>
+        <th>ÜRÜN MARKA</th>
+        <th>STOK</th>
+        <th>ALIŞ FİYATI</th>
+        <th>SATIŞ FİYATI</th>
+        <th>KATEGORİ</th>
+        <th>ÜRÜN SİL</th>
+        <th>ÜRÜN GÜNCELLE</th>
+        <th>SATIŞ İŞLEMİ</th>
+    </tr>
+
+    @foreach (var urn in Model)
+    {
+<tr>
+    @Html.Hidden(urn.UrunId.ToString())
+    <td>@urn.UrunAd</td>
+    <td>@urn.UrunMarka</td>
+    <td>@urn.Stok</td>
+    <td>@urn.AlisFiyati ₺</td>
+    <td>@urn.SatisFiyati ₺</td>
+    <td>@urn.Kategori.KategoriAd</td>
+    <td><a href="/Urun/UrunSil/@urn.UrunId" class="btn btn-danger">SİL</a></td>
+    <td><a href="/Urun/UrunGetir/@urn.UrunId" class="btn btn-success">GÜNCELLE</a></td>
+    <td><a href="/Urun/UrunSatis/@urn.UrunId" class="btn btn-default"style="background-color:#aebe43; color:white;">SATIŞ YAP</a></td>
+</tr>
+    }
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfano => Url.Action("Index", new { sayfano }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    {"page-link"}
+})
+<a href="/Urun/UrunEkle" class="btn btn-primary">ÜRÜN EKLE</a>
